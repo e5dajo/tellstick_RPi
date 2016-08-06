@@ -27,7 +27,7 @@ noon   =kungsbacka.next_transit   (ephem.Sun(), start=sunrise) #Solar noon
 sunset =kungsbacka.next_setting   (ephem.Sun()) #Sunset
 
 #We relocate the horizon to get twilight times
-kungsbacka.horizon = '-4' #-6=civil twilight, -12=nautical, -18=astronomical
+kungsbacka.horizon = '-3' #-6=civil twilight, -12=nautical, -18=astronomical
 beg_twilight=kungsbacka.previous_rising(ephem.Sun(), use_center=True) #Begin civil twilight
 end_twilight=kungsbacka.next_setting   (ephem.Sun(), use_center=True) #End civil twilight
 
