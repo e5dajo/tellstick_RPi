@@ -25,21 +25,22 @@ utc_morning_on_time = get_utc(config.morning_turnon_time)
 #get dusk and dawn from astro.py
 dusk_time =  dusk()
 dawn_time =  dawn()
-print "dusk:",dusk_time,"dawn:",dawn_time
+#dawn_time = "17:45"
+#print "dusk:",dusk_time,"dawn:",dawn_time
 #Handle evning timers (numbers specified in config.py)
 if checkdifftime(dawn_time,utc_evning_off_time):
    for i in config.evning_timers:
-      call(["/home/pi/tellstick/tdtool_on.sh",dawn_time,str(i)])
-      call(["/home/pi/tellstick/tdtool_off.sh",utc_evning_off_time,str(i)])
+      call(["/home/pi/tellstick/tdtool_on.sh",dawn_time,str(i),"1"])
+      call(["/home/pi/tellstick/tdtool_off.sh",utc_evning_off_time,str(i),"5"])
 
 #Handle morning timers (numbers specified in config.py)
 if checkdifftime(utc_morning_on_time,dusk_time):
    for i in config.morning_timers:
-      call(["/home/pi/tellstick/tdtool_on.sh",utc_morning_on_time,str(i)])
-      call(["/home/pi/tellstick/tdtool_off.sh",dusk_time,str(i)])
+      call(["/home/pi/tellstick/tdtool_on.sh",utc_morning_on_time,str(i),"10"])
+      call(["/home/pi/tellstick/tdtool_off.sh",dusk_time,str(i),"15"])
 
 #Handle lighs that are on during when dark:
 for j in config.night_timers:
-   call(["/home/pi/tellstick/tdtool_on.sh",dawn_time,str(j)])
-   call(["/home/pi/tellstick/tdtool_off.sh",dusk_time,str(j)])
+   call(["/home/pi/tellstick/tdtool_on.sh",dawn_time,str(j),"20"])
+   call(["/home/pi/tellstick/tdtool_off.sh",dusk_time,str(j),"25"])
 

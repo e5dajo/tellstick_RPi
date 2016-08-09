@@ -1,2 +1,2 @@
 #! /bin/bash 
-echo "tdtool --off $2" | at $1
+echo "sleep $3;tdtool --off $2" | at $1
